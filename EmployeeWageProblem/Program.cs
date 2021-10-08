@@ -10,29 +10,31 @@ namespace EmployeeWageProblem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation!");
-            int empHrs= 0;
+            int empHrs = 0;
 
             Random r = new Random();
             int empInput = r.Next(0, 3);
             Console.WriteLine(empInput);
-            if (IS_FullTime == empInput)
+            switch (empInput)
             {
 
-                Console.WriteLine("Employee is Present");
-                empHrs = 8;
-            }
-            else if (IS_PartTime == empInput)
-            {
+                case IS_FullTime:
+                    Console.WriteLine("Employee is Present");
+                    empHrs = 8;
+                    break;
 
-                Console.WriteLine("Employee is Present");
-                empHrs = 4;
-            }
-            else {
+                case IS_PartTime:
+                    Console.WriteLine("Employee is Present");
+                    empHrs = 4;
+                    break;
 
-                Console.WriteLine("Employee is Absent");
-                empHrs = 0;
+                default:
+                    Console.WriteLine("Employee is Absent");
+                    empHrs = 0;
+                    break;
             }
-            int empWage = EmpRatePerHrs * empHrs;
+     
+           int empWage = EmpRatePerHrs * empHrs;
             Console.WriteLine("the Employee age is {0}", empWage);
             Console.ReadLine();
 
