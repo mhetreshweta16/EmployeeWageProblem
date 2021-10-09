@@ -8,13 +8,14 @@ namespace EmployeeWageProblem
         public const int IS_FullTime = 1;
         public const int IS_PartTime = 2;
         public const int Num_Of_Working_Days = 20;
+        public const int WorkingHrs = 50;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation!");
-            int empHrs = 0;
+            int empHrs = 0, totalEmpHrs = 0;
             int totalEmpWage = 0;
-           
-            for ( int day =1; day <= Num_Of_Working_Days; day++ )
+            int day = 1;
+            while( day <= Num_Of_Working_Days && totalEmpHrs <= WorkingHrs )
             {
                 Random r = new Random();
                 int empInput = r.Next(0, 3);
@@ -37,14 +38,15 @@ namespace EmployeeWageProblem
                         empHrs = 0;
                         break;
                 }
-
+                
                 int empWage = EmpRatePerHrs * empHrs;
                 totalEmpWage += empWage;
                 Console.WriteLine("daily Employee Wage for {0} day {1}", day, empWage);
-                
+                totalEmpHrs += empHrs;
+                day++;
             }
 
-            Console.WriteLine("total employee wage is {0}",  totalEmpWage);
+            Console.WriteLine("total employee wage for {0} day {1} Max Work Hrs{2} ",day-1, totalEmpWage,totalEmpHrs);
             Console.ReadLine();
 
         }
