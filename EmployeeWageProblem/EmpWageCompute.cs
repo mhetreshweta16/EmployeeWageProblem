@@ -30,19 +30,13 @@ namespace EmployeeWageProblem
             }
 
         }
-
-
-
-
-
-
-        public int empWageCompute(int EmpRatePerHrs, int Num_Of_Working_Days, int WorkingHrs)
+     public int empWageCompute(string company,int EmpRatePerHrs, int Num_Of_Working_Days, int WorkingHrs)
         {
 
             int totalEmpHrs = 0;
             int totalEmpWage = 0;
             int day = 1;
-
+            Console.WriteLine("Employee Wage Computation for {0}", company);
             while (day <= Num_Of_Working_Days && totalEmpHrs <= WorkingHrs)
             {
                 Random r = new Random();
@@ -57,9 +51,10 @@ namespace EmployeeWageProblem
                 day++;
             }
 
-            Console.WriteLine("total employee wage for {0} day {1} Max Work Hrs{2} ", day - 1, totalEmpWage, totalEmpHrs);
+            Console.WriteLine("total employee wage for company {0} is {1} \n ", company, totalEmpWage);
+         
+            return totalEmpWage;
             Console.ReadLine();
-            return 0;
         }
 
     }

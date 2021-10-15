@@ -10,9 +10,11 @@ namespace EmployeeWageProblem
         //public const int WorkingHrs = 60;
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Employee Wage Computation!");
+            Console.WriteLine("Welcome to Employee Wage Computation!\n");
             EmpWageCompute emp = new EmpWageCompute();
-            emp.empWageCompute(20, 20, 60);
+            EmpWageCompute emp1 = new EmpWageCompute();
+            emp.empWageCompute("DMart",20, 20, 60);
+            emp1.empWageCompute("Reliance", 20, 15, 30);
 
 
 
