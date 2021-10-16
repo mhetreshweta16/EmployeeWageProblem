@@ -6,21 +6,32 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageProblem
 {
-    class EmpWageCompute
+   public class EmpWageCompute
     {
-        string company;
-        int EmpRatePerHrs;
-        int Num_Of_Working_Days;
-        int WorkingHrs;
-        int totalEmpWage = 0;
 
-        public EmpWageCompute(string company, int EmpRatePerHrs, int Num_Of_Working_Days, int WorkingHrs)
+
+        private int numofcompany = 0;
+        private CompanyEmpWage[] companyEmpWageArray;
+
+        public EmpWageCompute()
         {
-            this.company = company;
-            this.EmpRatePerHrs = EmpRatePerHrs;
-            this.Num_Of_Working_Days = Num_Of_Working_Days;
-            this.WorkingHrs = WorkingHrs;
-            
+            this.companyEmpWageArray = new CompanyEmpWage[5];
+        }
+
+        public void addCompanyEmpWage(string company, int EmpRatePerHrs, int Num_Of_Working_Days, int WorkingHrs)
+        {
+            companyEmpWageArray[this.numofcompany] = new CompanyEmpWage(company, EmpRatePerHrs, Num_Of_Working_Days, WorkingHrs);
+            numofcompany++;
+        }
+
+        public void ComputeEmpWage()
+        {
+            for (int i = 0; i < numofcompany; i++)
+            {
+                companyEmpWageArray[i].setTotalEmpWage(this.empWageCompute(this.companyEmpWageArray[i]));
+                Console.WriteLine(this.companyEmpWageArray[i].toString());
+              
+            }
         }
         public int checkEmpTime(int empInput)
         {
@@ -44,38 +55,28 @@ namespace EmployeeWageProblem
             }
 
         }
-     public void empWageCompute()
+     private int empWageCompute(CompanyEmpWage companyEmpWage)
         {
 
-            int totalEmpHrs = 0;
-           
-            int day = 1;
-            Console.WriteLine("Employee Wage Computation for {0}", company);
-            while (day <= Num_Of_Working_Days && totalEmpHrs <= WorkingHrs)
+            int totalEmpHrs = 0, empHrs = 0,totalWorkingDays = 0; 
+         
+            while (totalEmpHrs <= companyEmpWage.WorkingHrs && totalWorkingDays < companyEmpWage.Num_Of_Working_Days )
             {
                 Random r = new Random();
                 int empInput = r.Next(0, 3);
                 //Console.WriteLine(empInput);
-                int empHrs = checkEmpTime(empInput);
+                empHrs = checkEmpTime(empInput);
 
-                int empWage = EmpRatePerHrs * empHrs;
-                totalEmpWage += empWage;
-                Console.WriteLine("daily Employee Wage for {0} day {1}", day, empWage);
+                //int empWage = EmpRatePerHrs * empHrs;
                 totalEmpHrs += empHrs;
-                day++;
+                Console.WriteLine("Days:"+totalWorkingDays+"Emp Hrs: "+empHrs);
+              
             }
 
-            Console.WriteLine("total employee wage for company {0} is {1} \n ", company, totalEmpWage);
-         
-            
-            
-        }
-        public string toString()
-        { 
-           return "Total Emp Wage for Company :"+this.company+" is "+this.totalEmpWage;
+            return totalEmpHrs * companyEmpWage.EmpRatePerHrs;
 
-            //Console.ReadLine();
         }
+        
         
 
     }
