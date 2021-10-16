@@ -11,10 +11,15 @@ namespace EmployeeWageProblem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation!\n");
-            EmpWageCompute emp = new EmpWageCompute();
-            EmpWageCompute emp1 = new EmpWageCompute();
-            emp.empWageCompute("DMart",20, 20, 60);
-            emp1.empWageCompute("Reliance", 20, 15, 30);
+            EmpWageCompute emp = new EmpWageCompute("DMart", 20, 20, 60);
+            EmpWageCompute emp1 = new EmpWageCompute("Reliance", 20, 15, 30);
+            // emp.empWageCompute("DMart",20, 20, 60);
+            //emp1.empWageCompute("Reliance", 20, 15, 30);
+            emp.empWageCompute();
+            Console.WriteLine(emp.toString());
+            emp1.empWageCompute();
+            Console.WriteLine(emp1.toString());
+
 
 
 

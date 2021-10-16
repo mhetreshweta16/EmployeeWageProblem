@@ -8,6 +8,20 @@ namespace EmployeeWageProblem
 {
     class EmpWageCompute
     {
+        string company;
+        int EmpRatePerHrs;
+        int Num_Of_Working_Days;
+        int WorkingHrs;
+        int totalEmpWage = 0;
+
+        public EmpWageCompute(string company, int EmpRatePerHrs, int Num_Of_Working_Days, int WorkingHrs)
+        {
+            this.company = company;
+            this.EmpRatePerHrs = EmpRatePerHrs;
+            this.Num_Of_Working_Days = Num_Of_Working_Days;
+            this.WorkingHrs = WorkingHrs;
+            
+        }
         public int checkEmpTime(int empInput)
         {
 
@@ -30,11 +44,11 @@ namespace EmployeeWageProblem
             }
 
         }
-     public int empWageCompute(string company,int EmpRatePerHrs, int Num_Of_Working_Days, int WorkingHrs)
+     public void empWageCompute()
         {
 
             int totalEmpHrs = 0;
-            int totalEmpWage = 0;
+           
             int day = 1;
             Console.WriteLine("Employee Wage Computation for {0}", company);
             while (day <= Num_Of_Working_Days && totalEmpHrs <= WorkingHrs)
@@ -53,9 +67,16 @@ namespace EmployeeWageProblem
 
             Console.WriteLine("total employee wage for company {0} is {1} \n ", company, totalEmpWage);
          
-            return totalEmpWage;
-            Console.ReadLine();
+            
+            
         }
+        public string toString()
+        { 
+           return "Total Emp Wage for Company :"+this.company+" is "+this.totalEmpWage;
+
+            //Console.ReadLine();
+        }
+        
 
     }
 }
