@@ -16,6 +16,10 @@ namespace EmployeeWageProblem
              emp.addCompanyEmpWage("DMart",20, 20, 60);
             emp.addCompanyEmpWage("Reliance", 20, 15, 30);
             emp.ComputeEmpWage();
+            Console.WriteLine("total wage for DMart comany :");
+            emp.getTotalWage("DMart");
+            
+
             
 
 
